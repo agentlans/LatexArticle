@@ -1,0 +1,60 @@
+\documentclass[12pt, letterpaper]{article}
+
+{%- if cookiecutter.bibliography == 'y' -%}
+\usepackage[style=science]{biblatex}
+\addbibresource{ {{-cookiecutter.bib_file-}} }
+{% endif %}
+{%- if cookiecutter.hide_page_num == 'y' -%}
+\usepackage{nopageno} % No page numbers
+{% endif %}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+
+% Theorem environments
+\usepackage{amsthm}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem*{remark}{Remark}
+
+\usepackage{mathtools} % loads amsmath
+\usepackage{amssymb}
+
+\usepackage{comment}
+
+% Math symbols
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\powerset}{\mathcal{P}}
+
+\title{ {{-cookiecutter.title-}} }
+\author{ {{-cookiecutter.full_name-}} }
+\date{ {{-cookiecutter.date-}} }
+
+\begin{document}
+
+\maketitle
+
+\begin{theorem}
+\[
+\sum_{k=0}^{n-p} \binom{2n+1}{2p+2k+1} \binom{p+k}{k} = \binom{2n-p}{p} 2^{2n-2p}
+\]
+\begin{proof}
+{% if cookiecutter.bibliography == 'y' %}
+See \cite{moriarty}.
+{% else %}
+Elementary, my dear Watson.
+{% endif %}
+\end{proof}
+\end{theorem}
+
+{% if cookiecutter.bibliography == 'y' %}
+\printbibliography
+{% endif %}
+\end{document}
